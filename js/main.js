@@ -46,6 +46,8 @@ require([
   var searchLayer = new GraphicsLayer();
   var stationGraphics = new GraphicsLayer();
   stationGraphics.title = "BCycle Stations";
+  resultingLayer.listMode = "hide";
+  searchLayer.listMode = "hide";
   map.addMany([resultingLayer, searchLayer, stationGraphics]);
 
   //Add a bikeways layer
