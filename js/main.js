@@ -14,7 +14,8 @@ require([
   "esri/geometry/Multipoint",
   "esri/tasks/Locator",
   "esri/geometry/Extent",
-  "esri/widgets/Zoom"
+  "esri/widgets/Zoom",
+  "esri/widgets/LayerList"
 ], function(
   Map,
   MapView,
@@ -31,7 +32,8 @@ require([
   Multipoint,
   Locator,
   Extent,
-  Zoom
+  Zoom,
+  LayerList
 ) {
 
   //Create the map
@@ -43,7 +45,15 @@ require([
   var resultingLayer = new GraphicsLayer();
   var searchLayer = new GraphicsLayer();
   var stationGraphics = new GraphicsLayer();
+  stationGraphics.title = "BCycle Stations";
   map.addMany([resultingLayer, searchLayer, stationGraphics]);
+
+  //Add a bikeways layer
+  var bikeways = new FeatureLayer({
+    url: "https://gis.h-gac.com/arcgis/rest/services/Ped_Bike/Existing_Bikeways/MapServer/0",
+    visible: false
+  });
+  map.add(bikeways);
 
   //Add the view
   var view = new MapView({
@@ -95,6 +105,20 @@ require([
     expandTooltip: "Search for an address",
     view: view,
     content: searchWidget,
+    mode: "floating",
+    group: "top-left"
+  });
+
+  //Create the LayerList and the button for the LayerList
+  var layerWidget = new LayerList({
+    view: view
+  });
+
+  var layerButton = new Expand({
+    expandIconClass: "esri-icon-layer-list",
+    expandTooltip: "View the Layers",
+    view: view,
+    content: layerWidget,
     mode: "floating",
     group: "top-left"
   });
@@ -295,12 +319,14 @@ require([
     if (isMobile){
       view.ui.add(zoom, "bottom-right");
       view.ui.add(homeWidget, "bottom-right");
+      view.ui.add(layerButton, "top-right");
       view.ui.add(searchWidget, "bottom-right");
       view.ui.remove(searchButton);
     } else {
       view.ui.add(zoom, "top-left");
       view.ui.add(homeWidget, "top-left");
       view.ui.add(searchButton, "top-left");
+      view.ui.add(layerButton, "top-left");
       view.ui.remove(searchWidget);
     }
   }
