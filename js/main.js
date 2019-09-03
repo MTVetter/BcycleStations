@@ -205,37 +205,39 @@ require([
         }
       };
 
-      //Attributes for the point
-      var pointAttributes = {
-        station_id: stationInfo.station_id,
-        name: stationInfo.name,
-        address: stationInfo.address,
-        latitude: stationInfo.lat,
-        longitude: stationInfo.lon
-      };
+      esriRequest("https://gbfs.bcycle.com/bcycle_houston/station_status.json",{
+        responseType: "json"
+      }).then(function(response){
+        response.data.data.stations.map(function(info){
+          if (stationInfo.station_id == info.station_id){
+            var pointAttributes2 = {
+              station_id: stationInfo.station_id,
+              name: stationInfo.name,
+              address: stationInfo.address,
+              latitude: stationInfo.lat,
+              longitude: stationInfo.lon,
+              bikes_available: info.num_bikes_available,
+              docks_available: info.num_docks_available
+            };
 
-      //Create the new Graphic
-      var pointGraphic = new Graphic({
-        geometry: point,
-        symbol: pointSymbol,
-        attributes: pointAttributes,
-        popupTemplate: {
-          title: "{name}",
-          content: [{
-            type: "text",
-            text: "{name} is located at {address} and has a Lat/Long of {latitude}, {longitude}."
-          }]
-        }
+            var test = new Graphic({
+              geometry: point,
+              symbol: pointSymbol,
+              attributes: pointAttributes2,
+              popupTemplate: {
+                title: "{name}",
+                content: [{
+                  type: "text",
+                  text: "{name} is located at {address} and has a Lat/Long of {latitude}, {longitude}. Currently, {name} has {bikes_available} bikes available and {docks_available} docks available."
+                }]
+              }
+            });
+            stationGraphics.add(test);
+          }
+        });
       });
-      stationGraphics.add(pointGraphic);
-    });
-  });
 
-  //Testing the station status
-  esriRequest("https://gbfs.bcycle.com/bcycle_houston/station_status.json",{
-    responseType: "json"
-  }).then(function(response){
-    console.log(response.data.data.stations);
+    });
   });
 
   //Create a dialog box when click the info button
