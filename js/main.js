@@ -205,6 +205,7 @@ require([
         }
       };
 
+      //Use esriRequest to get information about the bcycle stations and join it based on the station_id
       esriRequest("https://gbfs.bcycle.com/bcycle_houston/station_status.json",{
         responseType: "json"
       }).then(function(response){
