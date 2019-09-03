@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>BCycle Stations</title>
+
+		<!--put your external stylesheet links here-->
+		<link rel="stylesheet" href="https://js.arcgis.com/4.12/esri/themes/light/main.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/jquery-ui.css">
+		<link href="https://fonts.googleapis.com/css?family=Yellowtail" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
+		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+		<!--[if IE<9]>
+			<link rel="stylesheet" href="css/style.ie.css">
+		<![endif]-->
+	</head>
+
+	<body>
+		<!--put your initial page content here-->
+			
+		<!--you can also use this space for internal scripts or stylesheets;
+		place these within <script> or <style> tags-->
+		<div id="wrapper">
+			<header class="bar">
+				<div class="logo"><a href="https://houston.bcycle.com/" target="_blank"><img src="img/bcycleLogo.png"></a></div>
+				<div class="title1"><a href="https://houston.bcycle.com/" target="_blank"><h2>Houston BCycle</h2></a></div>
+				<div class="about"><img class="fa fa-info-circle fa-2x"></div>
+			</header>
+			<div id="viewDiv">
+				<div id="dialog" title="About the Application">
+					<p>This application displays the locations of all the Houston BCycle stations. Use the search widget to search for an address.
+						Once the address is found, the map will zoom to the closest BCycle station to the searched address.
+						<br><br>The BCycle stations were created from the publicly available <a id="stations" href="https://gbfs.bcycle.com/bcycle_houston/station_information.json" target="_blank">data source</a>.
+					</p>
+				</div>
+			</div>
+		</div>
+		<!--put your external script links here-->
+		<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+		<script type="text/javascript" src="js/jquery-ui.js"></script>
+		<script src="https://js.arcgis.com/4.12/"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>

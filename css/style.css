@@ -1,0 +1,78 @@
+html, body{
+    height: 100vh;
+    margin: 0;
+}
+body{
+    display: flex;
+}
+.bar{
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-color: gainsboro;
+    padding: 10px;
+}
+.about{
+    cursor: pointer;
+    margin-right: 20px;
+    margin-left: auto;
+}
+.title1{
+    margin-left: 25px;
+    display: none;
+    font-size: 25px;
+    font-family: "Yellowtail";
+    color: black;
+}
+#viewDiv{
+    flex: 2 1 auto;
+    position: relative;
+    z-index: 1;
+}
+#wrapper{
+    display: flex;
+    flex-flow: column;
+    flex: 1 1 auto;
+}
+.logo, img{
+    width: 500px;
+}
+.ui-dialog{
+    z-index: 1;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+#stations{
+    text-decoration: underline;
+    color: blue;
+}
+
+
+@media screen and (max-width: 768px){
+    .logo{
+        display: none;
+    }
+    .title1{
+        display: flex;
+    }
+    .esri-widget--button.esri-widget.esri-interactive{
+        height: 50px;
+        width: 50px;
+        border-radius: 50px;
+    }
+    .esri-component.esri-zoom.esri-widget{
+        border-radius: 150px;
+        background-color: unset;
+    }
+    .esri-component.esri-home.esri-widget--button.esri-widget{
+        height: 50px;
+        width: 60px;
+        border-radius: 50px;
+    }
+    .esri-zoom .esri-widget--button:first-child{
+        margin-bottom: 5px;
+        border-bottom: solid 1px rgba(110,110,110, 0.3);
+    }
+}
