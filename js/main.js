@@ -302,9 +302,4 @@ require([
     }
   }
 
-  //Change the center of the view when the view is resized
-  // view.on("resize", function(evt){
-  //   view.center = [-95.381214, 29.742862];
-  // })
-
 });
