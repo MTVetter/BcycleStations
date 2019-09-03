@@ -36,6 +36,10 @@ require([
   LayerList
 ) {
 
+  $(document).on("click", function(){
+    $("#welcomePanel").hide();
+  });
+
   //Create the map
   var map = new Map({
     basemap: "dark-gray-vector"

@@ -48,6 +48,19 @@ a{
     text-decoration: underline;
     color: blue;
 }
+#welcomePanel{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -65%);
+    width: 40%;
+    padding: 2vh 2vw;
+	font: 16px, sans-Serif;
+	background: rgba(255,255,255,0.9);
+	box-shadow: 0 0 15px rgba(37,37,37,0.4);
+	border-radius: 5px;
+	text-align: center;
+}
 
 
 @media screen and (max-width: 768px){
